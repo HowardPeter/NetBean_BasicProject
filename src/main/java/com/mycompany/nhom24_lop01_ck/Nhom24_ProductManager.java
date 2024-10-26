@@ -81,16 +81,17 @@ public class Nhom24_ProductManager {
 
     // Phương thức void: Cập nhật giá sản phẩm với % tăng giá
     public void updatePrice(int id, float percentage) {
+        if (percentage < -100 || percentage > 100) // Phát biểu điều kiện với 2 toán hạng trở lên
+        {
+            throw new IllegalArgumentException("Invalid percentage!");
+        }
+        
         boolean found = false;
         for (Nhom24_ProductManager product : productList) 
         {
             if(product.getProductID() == id)
             {
                 found = true;
-                if (percentage < -100 || percentage > 100) // Phát biểu điều kiện với 2 toán hạng trở lên
-                {
-                    System.out.println("Invalid percentage!");
-                }
                 float oldPrice = product.getProductPrice();
                 float newPrice = oldPrice + oldPrice * (percentage / 100);
                 product.setProductPrice(newPrice);

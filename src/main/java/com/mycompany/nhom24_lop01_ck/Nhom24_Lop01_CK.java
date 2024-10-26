@@ -22,7 +22,7 @@ public class Nhom24_Lop01_CK {
         productManager.addProducts();
         System.out.println("Before update price");
         productManager.displayProducts();
-        productManager.updatePrice(1, 50);
+        productManager.updatePrice(1, -150);
         System.out.println("After update price");
         productManager.displayProducts();
 //        try {
