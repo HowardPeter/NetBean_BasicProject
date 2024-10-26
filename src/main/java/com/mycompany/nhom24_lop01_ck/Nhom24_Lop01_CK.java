@@ -20,11 +20,15 @@ public class Nhom24_Lop01_CK {
     {
         Nhom24_ProductManager productManager = new Nhom24_ProductManager();
         productManager.addProducts();
+        System.out.println("Before update price");
         productManager.displayProducts();
-        try {
-            productManager.findProduct(1);
-        } catch (Exception ex) {
-            Logger.getLogger(Nhom24_Lop01_CK.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        productManager.updatePrice(1, 50);
+        System.out.println("After update price");
+        productManager.displayProducts();
+//        try {
+//            productManager.findProduct(1);
+//        } catch (Exception ex) {
+//            Logger.getLogger(Nhom24_Lop01_CK.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 }

@@ -81,25 +81,32 @@ public class Nhom24_ProductManager {
 
     // Phương thức void: Cập nhật giá sản phẩm với % tăng giá
     public void updatePrice(int id, float percentage) {
+        boolean found = false;
         for (Nhom24_ProductManager product : productList) 
         {
             if(product.getProductID() == id)
             {
+                found = true;
                 if (percentage < -100 || percentage > 100) // Phát biểu điều kiện với 2 toán hạng trở lên
                 {
-                    throw new IllegalArgumentException("Invalid percentage!");
+                    System.out.println("Invalid percentage!");
                 }
                 float oldPrice = product.getProductPrice();
                 float newPrice = oldPrice + oldPrice * (percentage / 100);
-                setProductPrice(newPrice);
-                System.out.println("Updated Price: $" + newPrice);
+                product.setProductPrice(newPrice);
+                System.out.println("Product id: " + id + "\nUpdated price: $" + newPrice);
+                break;
             }
+        }
+        if(!found)
+        {
+            System.out.println("Product with id " + id + " does not exists!");
         }
     }
 
     // Phương thức có xử lý Exception: Tìm kiếm sản phẩm theo id
     public void findProduct(int id) throws Exception
-    {
+    {        
         boolean found = false;
         for (Nhom24_ProductManager product : productList) 
         {
@@ -107,6 +114,7 @@ public class Nhom24_ProductManager {
                 found = true;
                 System.out.println("Product found:");
                 System.out.println("ID: " + product.getProductID() + ", Name: " + product.getProductName() + ", Category: " + product.getProductCategory() + ", Price: $" + product.getProductPrice());
+                break;
             }
         }
         if(!found)
